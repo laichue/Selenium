@@ -19,9 +19,9 @@ count = 1
 for image in images:
 	image.click()#각 이미지 저장
 	time.sleep(1)
-	imgUrl = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".n3VNCb"))).get_attribute("src")#이미지 주소 획득
+	imgUrl = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".r48jcc.pT0Scc.iPVvYb"))).get_attribute("src")#이미지 주소 획득
 	file_path = os.path.join("C:/my_coding/selenium/Crawling Selenium images", str(count) + ".jpg") # 파일 경로 생성
-	urllib.request.urlretrieve(imgUrl, str(count)+".jpg")#해당 주소에 있는 이미지 저장
+	urllib.request.urlretrieve(imgUrl, file_path) # 해당 주소에 있는 이미지 저장
 	count = count + 1
  
 while(True):#열린 창 바로 닫힘 문제 해결: while문을 지속 수행해 함수가 종료되지 않게하여 selenium제어창을 유지
