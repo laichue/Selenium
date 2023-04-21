@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 import urllib.request
+import os  # os 모듈 추가
 
 driver = webdriver.Chrome()
 driver.get("https://www.google.co.kr/imghp?hl=ko&tab=ri&authuser=0&ogbl")#구글 이미지 검색 초기 창 주소
@@ -17,8 +18,9 @@ images = driver.find_elements(By.CSS_SELECTOR, ".rg_i.Q4LuWd")#각 작은 이미
 count = 1
 for image in images:
 	image.click()#각 이미지 저장
-	time.sleep(3)
+	time.sleep(1)
 	imgUrl = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".n3VNCb"))).get_attribute("src")#이미지 주소 획득
+	file_path = os.path.join("C:/my_coding/selenium/Crawling Selenium images", str(count) + ".jpg") # 파일 경로 생성
 	urllib.request.urlretrieve(imgUrl, str(count)+".jpg")#해당 주소에 있는 이미지 저장
 	count = count + 1
  
